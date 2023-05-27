@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Popup from './components/popup/Popup';
 
 function App() {
   const [apiData, setApiData] = useState('');
@@ -15,18 +15,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className='Api-test'>
           API response: {apiData}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Popup />
       </header>
     </div>
   );
