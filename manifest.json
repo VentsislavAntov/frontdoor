@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "React App",
+  "version": "1.0.0",
+  "description": "Create React App Sample",
+  "icons": {
+    "16": "public/logo192.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "public/logo192.png"
+    }
+  },
+  "permissions": ["activeTab", "declarativeContent"],
+  "version_name": "1.0.0"
+}
