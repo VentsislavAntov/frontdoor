@@ -83,3 +83,14 @@ h1 {
 .Title {
   color: black;
 }
+
+.ToggleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+  margin-bottom: 10px;
+}
+
+.ToggleContainer .ToggleExtension {
+  color: black;
+}

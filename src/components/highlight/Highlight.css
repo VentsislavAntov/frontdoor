@@ -31,8 +31,8 @@
 .Date {
   color: #fff;
   font-size: 12px;
-  padding-left: 10px; /* Updated to padding-left */
-  margin-left: auto; /* Added margin-left: auto */
+  padding-left: 10px;
+  margin-left: auto;
 }
 
 .FlexContainer {

@@ -32,16 +32,14 @@ function Highlight({ originalText, summary, date, tags }: HighlightProps) {
   };
 
   return (
-    <div className="Highlight">
+    <div className="Highlight" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="HighlightContent">
         <div className="OriginalText">{originalText}...</div>
         <div className="Date">({date})</div>
       </div>
       <div className="FlexContainer">
-        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <div className="Summary">
-            <span onMouseEnter={handleTooltipMouseEnter} onMouseLeave={handleTooltipMouseLeave}>Summary</span>
-          </div>
+        <div className="Summary">
+          Summary
         </div>
         <div className="Tags">
           {tags.map((tag, index) => (

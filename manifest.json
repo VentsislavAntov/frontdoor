@@ -1,5 +1,8 @@
 {
   "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
   "name": "React App",
   "version": "1.0.0",
   "description": "Create React App Sample",
@@ -13,5 +16,12 @@
     }
   },
   "permissions": ["activeTab", "declarativeContent"],
-  "version_name": "1.0.0"
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

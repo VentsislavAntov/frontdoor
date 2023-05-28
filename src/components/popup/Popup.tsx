@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Popup.css';
 import Highlight from '../highlight/Highlight';
+import EnableButton from '../enableButton/EnableButton';
+
 
 interface HighlightData {
   id: number;
@@ -59,6 +61,10 @@ function Popup() {
   return (
     <div className="Popup">
       <header className="App-header">
+        <div className="ToggleContainer">
+          <span className="ToggleExtension">Toggle Extension:</span>
+          <EnableButton />
+        </div>
         <h1 className='Title'>My Highlights</h1>
         <div className="FilterContainer">
           <div>

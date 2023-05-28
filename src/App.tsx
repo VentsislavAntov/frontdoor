@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Popup from './components/popup/Popup';
+import { ContextProvider } from './contexts/EnableButtonContext';
 
 function App() {
   const [apiData, setApiData] = useState('');
@@ -15,11 +16,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p className='Api-test'>
-          API response: 
-          {apiData}
+        <p className="Api-test">
+          API response: {apiData}
         </p>
-        <Popup />
+        <ContextProvider>
+          <Popup />
+        </ContextProvider>
       </header>
     </div>
   );
