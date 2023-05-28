@@ -6,7 +6,7 @@ function App() {
   const [apiData, setApiData] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/sample') // Replace with your server's API endpoint
+    fetch('http://localhost:3000/sample')
       .then((response) => response.text())
       .then((data) => setApiData(data))
       .catch((error) => console.error(error));
@@ -16,7 +16,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p className='Api-test'>
-          API response: {apiData}
+          API response: 
+          {apiData}
         </p>
         <Popup />
       </header>

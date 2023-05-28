@@ -84,7 +84,7 @@ function Popup() {
           {sortedHighlights.map((highlight) => (
             <Highlight
               key={highlight.id}
-              originalText={highlight.originalText.slice(0, 16)}
+              originalText={highlight.originalText.slice(0, 35)}
               summary={highlight.summary}
               date={highlight.date}
               tags={highlight.tags}
