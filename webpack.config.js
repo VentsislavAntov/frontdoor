@@ -1,9 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './popup.tsx',
+  entry: {
+    popup: './popup.tsx',
+    background: './background.ts',
+    content: './content.ts'
+  },
   output: {
-    filename: 'popup.bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'production',
