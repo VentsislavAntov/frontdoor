@@ -1,9 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 
-@Controller('sample')
-export class SampleController {
+@Controller('database')
+export class DatabaseController {
   @Get()
-  getSampleData(): any {
+  getDatabaseData(): any {
     return [
       {
         id: 1,
@@ -41,5 +41,17 @@ export class SampleController {
         tags: ['Tag E', 'Tag A'],
       },
     ];
+  }
+
+  @Post()
+  addItem(@Body() item: any): any {
+    // Handle adding the item to the database
+    // Implement the desired functionality here
+    // Return the updated list of items or a success message
+    return {
+      success: true,
+      message: 'Item added successfully',
+      item: item,
+    };
   }
 }

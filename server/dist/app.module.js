@@ -10,14 +10,16 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const sample_controller_1 = require("./sample/sample.controller");
+const database_controller_1 = require("./database/database.controller");
+const openai_controller_1 = require("./openai/openai.controller");
+const OpenService_1 = require("./openai/OpenService");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [],
-        controllers: [app_controller_1.AppController, sample_controller_1.SampleController],
-        providers: [app_service_1.AppService],
+        controllers: [app_controller_1.AppController, database_controller_1.DatabaseController, openai_controller_1.OpenaiController],
+        providers: [app_service_1.AppService, OpenService_1.OpenaiService],
     })
 ], AppModule);
 exports.AppModule = AppModule;
