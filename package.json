@@ -32,7 +32,8 @@
     "start": "react-scripts start",
     "build": "webpack",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-start": "npm run build && PORT=3001 react-scripts start"
   },
   "eslintConfig": {
     "extends": [

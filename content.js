@@ -4,7 +4,7 @@ document.addEventListener('mouseup', handleMouseUp);
 function handleMouseUp(event) {
   // Get the selected text
   const selectedText = window.getSelection().toString();
-  console.log('selectedText')
+  console.log('selectedTex contentt')
   console.log(selectedText)
 
   // Send a message to the background script

@@ -20,7 +20,7 @@ function Popup() {
   useEffect(() => {
     const fetchHighlights = async () => {
       try {
-        const response = await fetch('http://localhost:3000/sample');
+        const response = await fetch('http://localhost:3000/database');
         const data = await response.json();
         setHighlights(data);
       } catch (error) {
@@ -90,7 +90,7 @@ function Popup() {
           {sortedHighlights.map((highlight) => (
             <Highlight
               key={highlight.id}
-              originalText={highlight.originalText.slice(0, 35)}
+              originalText={highlight.originalText.length > 50 ? `${highlight.originalText.slice(0, 50)}...` : highlight.originalText}
               summary={highlight.summary}
               date={highlight.date}
               tags={highlight.tags}

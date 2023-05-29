@@ -3,6 +3,6 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.selectedText) {
     // Handle the selected text received from the content script
-    console.log('Selected Text:', message.selectedText);
+    console.log('Selected Text Background:', message.selectedText);
   }
 });

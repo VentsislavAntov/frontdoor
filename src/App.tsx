@@ -7,7 +7,7 @@ function App() {
   const [apiData, setApiData] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/sample')
+    fetch('http://localhost:3000/database')
       .then((response) => response.text())
       .then((data) => setApiData(data))
       .catch((error) => console.error(error));

@@ -3,9 +3,9 @@
   "background": {
     "service_worker": "background.js"
   },
-  "name": "React App",
+  "name": "Highlight Summaries",
   "version": "1.0.0",
-  "description": "Create React App Sample",
+  "description": "Create Summaries for Highlights",
   "icons": {
     "16": "public/logo192.png"
   },
