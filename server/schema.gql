@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SummaryOutput {
+  id: String!
+  originalText: ID!
+  summary: String!
+  tags: [String!]!
+  date: String!
+}
+
+type Query {
+  summaries: [SummaryOutput!]!
+}
+
+type Mutation {
+  createSummary(input: SummaryInput!): SummaryOutput!
+}
+
+input SummaryInput {
+  originalText: String!
+  summary: String!
+  tags: [String!]!
+  date: String!
+}

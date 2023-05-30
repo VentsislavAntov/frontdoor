@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Popup.css';
 import Highlight from '../highlight/Highlight';
-import EnableButton from '../enableButton/EnableButton';
-
+import { gql, useQuery } from '@apollo/client';
 
 interface HighlightData {
   id: number;
@@ -17,19 +16,26 @@ function Popup() {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [sortByDate, setSortByDate] = useState<'asc' | 'desc'>('asc');
 
-  useEffect(() => {
-    const fetchHighlights = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/database');
-        const data = await response.json();
-        setHighlights(data);
-      } catch (error) {
-        console.error(error);
+  const GET_SUMMARIES = gql`
+    {
+      summaries {
+        id
+        date
+        summary
+        originalText
+        tags
       }
-    };
+    }`;
 
-    fetchHighlights();
-  }, []);
+  const { loading, error, data } = useQuery(GET_SUMMARIES);
+
+  useEffect(() => {
+    console.log( loading, error, data)
+    if (!loading && data) {
+      console.log('in set highlights')
+      setHighlights(data.summaries);
+    }
+  }, [loading, data]);
 
   const handleTagChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTag(e.target.value);
@@ -53,18 +59,39 @@ function Popup() {
     : highlights;
 
   const sortedHighlights = [...filteredHighlights].sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return sortByDate === 'asc' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
+    const dateA = a.date;
+    const dateB = b.date;
+    return sortByDate === 'asc' ? dateA.localeCompare(dateB) : dateB.localeCompare(dateA);
   });
+
+  const handleExportCSV = () => {
+    // Convert sortedHighlights to CSV format and initiate download
+    const csvData = convertToCSV(sortedHighlights);
+    const csvBlob = new Blob([csvData], { type: 'text/csv' });
+    const csvURL = URL.createObjectURL(csvBlob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = csvURL;
+    downloadLink.download = 'highlights.csv';
+    downloadLink.click();
+  };
+
+  const convertToCSV = (data: HighlightData[]) => {
+    const csvRows = [];
+    const headers = Object.keys(data[0]);
+    csvRows.push(headers.join(','));
+
+    for (const row of data) {
+      // @ts-ignore
+      const values = headers.map((header) => row[header]);
+      csvRows.push(values.join(','));
+    }
+
+    return csvRows.join('\n');
+  };
 
   return (
     <div className="Popup">
       <header className="App-header">
-        <div className="ToggleContainer">
-          <span className="ToggleExtension">Toggle Extension:</span>
-          <EnableButton />
-        </div>
         <h1 className='Title'>My Highlights</h1>
         <div className="FilterContainer">
           <div>
@@ -96,6 +123,7 @@ function Popup() {
               tags={highlight.tags}
             />
           ))}
+          <button onClick={handleExportCSV}>Export as CSV</button>
         </div>
       ) : (
         <div className="NoHighlights">No highlights available</div>

@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { OpenaiService } from './OpenService';
+import { OpenaiService } from './openai.service';
 
 @Controller('openai')
 export class OpenaiController {

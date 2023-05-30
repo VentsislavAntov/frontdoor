@@ -31,20 +31,31 @@ function Highlight({ originalText, summary, date, tags }: HighlightProps) {
     setShowTooltip(false);
   };
 
+  const formatDate = (dateString: string | number | Date) => {
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric' as const,
+    };
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', options as any).format(new Date(dateString));
+    return formattedDate;
+  };
+
+
   return (
     <div className="Highlight" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="HighlightContent">
         <div className="OriginalText">{originalText}</div>
-        <div className="Date">({date})</div>
+        <div className="Date">({formatDate(date)})</div>
       </div>
       <div className="FlexContainer">
-        <div className="Summary">
-          Summary
-        </div>
         <div className="Tags">
           {tags.map((tag, index) => (
             <div key={index} className="Tag">
-              {tag}
+              #{tag}
             </div>
           ))}
         </div>

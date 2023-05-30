@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "@babel/core": "^7.22.1",
     "@babel/preset-react": "^7.22.3",
     "@babel/preset-typescript": "^7.21.5",
@@ -52,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.237"
   }
 }

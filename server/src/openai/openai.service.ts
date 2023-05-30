@@ -13,7 +13,7 @@ export class OpenaiService {
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `Summarize this in a maximum of 5 words: ${text}`,
+      prompt: `Summarize this in no more than 5 words and remove all special characters and new lines: ${text}`,
       temperature: 0.7,
       max_tokens: 64,
       top_p: 1.0,
@@ -21,7 +21,7 @@ export class OpenaiService {
       presence_penalty: 0.0,
     });
 
-    const summary = response.data.choices[0].text;
+    const summary = response.data.choices[0].text?.replace(/\n/g, ' ')?.trim();
     console.log('summary in openService', summary);
     return summary;
   }
@@ -33,7 +33,7 @@ export class OpenaiService {
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: `Generate a maximum of 5 tags and separate them with commas. Add a # symbol in front of the tag: ${text}`,
+      prompt: `Generate a maximum of 5 tags and separate them with commas. Add a # symbol in front of the tag. Remove special characters and new lines: ${text}`,
       temperature: 0.7,
       max_tokens: 64,
       top_p: 1.0,
@@ -41,7 +41,7 @@ export class OpenaiService {
       presence_penalty: 0.0,
     });
 
-    const tags = response.data.choices[0].text;
+    const tags = response.data.choices[0]?.text?.trim();
     if (!tags || !tags.length) {
       throw new Error('Tags failed to be generated');
     }

@@ -15,7 +15,7 @@
       "16": "public/logo192.png"
     }
   },
-  "permissions": ["activeTab", "declarativeContent"],
+  "permissions": ["activeTab", "declarativeContent", "storage", "scripting", "tabs", "management"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
