@@ -1,0 +1,21 @@
+.Tooltip {
+  position: fixed;
+  top: calc(50% - 20px);
+  left: calc(50% - 75px);
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.TooltipArrow {
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #000;
+}

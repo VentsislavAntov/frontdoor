@@ -1,0 +1,51 @@
+.Highlight {
+  display: flex;
+  flex-direction: column;
+  background-color: #9b8beb;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 1.5rem;
+  min-width: 20rem;
+}
+
+.HighlightContent {
+  display: flex;
+  align-items: center;
+}
+
+.OriginalText {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #fff;
+  text-align: left;
+}
+
+.Date {
+  color: #fff;
+  font-size: 12px;
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+.FlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.Tag {
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f76f6f;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
