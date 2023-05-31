@@ -9,15 +9,13 @@ interface TooltipProps {
 }
 
 function Tooltip({ text, position, onMouseEnter, onMouseLeave }: TooltipProps) {
-  const [showTooltip, setShowTooltip] = useState(false);
 
+  //These are needed to prevent flickering behaviour
   const handleMouseEnter = () => {
-    setShowTooltip(true);
     onMouseEnter();
   };
 
   const handleMouseLeave = () => {
-    setShowTooltip(false);
     onMouseLeave();
   };
 

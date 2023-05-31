@@ -46,9 +46,9 @@ function Highlight({ originalText, summary, date, tags }: HighlightProps) {
 
 
   return (
-    <div className="Highlight" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="Highlight" data-testid="highlight" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="HighlightContent">
-        <div className="OriginalText">{originalText}</div>
+        <div className="OriginalText" data-testid="original-text">{originalText}</div>
         <div className="Date">({formatDate(date)})</div>
       </div>
       <div className="FlexContainer">

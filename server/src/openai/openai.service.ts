@@ -22,7 +22,9 @@ export class OpenaiService {
     });
 
     const summary = response.data.choices[0].text?.replace(/\n/g, ' ')?.trim();
-    console.log('summary in openService', summary);
+    if (!summary) {
+      throw new Error('Summary could not be generated');
+    }
     return summary;
   }
 
@@ -45,13 +47,12 @@ export class OpenaiService {
     if (!tags || !tags.length) {
       throw new Error('Tags failed to be generated');
     }
-    console.log('tags in openService', tags);
     const tagsArray = tags.split(',');
     let finalTags = tagsArray;
+    // Sometimes this still has >5 tags.
     if (tagsArray.length > 5) {
       finalTags = tagsArray.slice(0, 5);
     }
-
     return finalTags;
   }
 }

@@ -8,7 +8,6 @@ export class OpenaiController {
   @Post('summary')
   async generateSummary(@Body() body: { text: string }): Promise<string> {
     const { text } = body;
-    console.log(text);
     const summary = await this.openaiService.generateSummary(text);
     return summary;
   }

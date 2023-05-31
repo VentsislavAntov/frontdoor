@@ -32,10 +32,13 @@ export class SummaryOutput {
 export class SummaryInput {
   @Field()
   readonly originalText: string;
+
   @Field()
   readonly summary: string;
+
   @Field(() => [String])
   readonly tags: string[];
+
   @Field()
   readonly date: string;
 }

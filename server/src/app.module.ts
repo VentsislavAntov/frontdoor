@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { OpenaiController } from './openai/openai.controller';
 import { OpenaiService } from './openai/openai.service';
@@ -16,10 +14,11 @@ import { MongooseModule } from '@nestjs/mongoose';
       autoSchemaFile: 'schema.gql',
     }),
     MongooseModule.forRoot(
+      // Hardcoded here to enable easier testing from other machines. All IP addresses have been set to have access, so this should work.
       'mongodb+srv://User1:Test123@cluster0.rir8k73.mongodb.net/?retryWrites=true&w=majority',
     ),
   ],
-  controllers: [AppController, OpenaiController],
-  providers: [AppService, OpenaiService],
+  controllers: [OpenaiController],
+  providers: [OpenaiService],
 })
 export class AppModule {}

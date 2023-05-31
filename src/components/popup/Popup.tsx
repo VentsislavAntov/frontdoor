@@ -11,28 +11,27 @@ interface HighlightData {
   tags: string[];
 }
 
-function Popup() {
+export const GET_SUMMARIES = gql`
+  {
+    summaries {
+      id
+      date
+      summary
+      originalText
+      tags
+    }
+  }`;
+
+const Popup = () => {
   const [highlights, setHighlights] = useState<HighlightData[]>([]);
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [sortByDate, setSortByDate] = useState<'asc' | 'desc'>('asc');
 
-  const GET_SUMMARIES = gql`
-    {
-      summaries {
-        id
-        date
-        summary
-        originalText
-        tags
-      }
-    }`;
-
   const { loading, error, data } = useQuery(GET_SUMMARIES);
 
   useEffect(() => {
-    console.log( loading, error, data)
+    // Load on new data and if it loads correctly
     if (!loading && data) {
-      console.log('in set highlights')
       setHighlights(data.summaries);
     }
   }, [loading, data]);
@@ -95,7 +94,7 @@ function Popup() {
         <h1 className='Title'>My Highlights</h1>
         <div className="FilterContainer">
           <div>
-            <select value={selectedTag} onChange={handleTagChange}>
+            <select data-testid="tag-select" value={selectedTag} onChange={handleTagChange}>
               <option value="">All Tags</option>
               {availableTags.map((tag) => (
                 <option key={tag} value={tag}>
@@ -105,7 +104,7 @@ function Popup() {
             </select>
           </div>
           <div>
-            <select value={sortByDate} onChange={handleSortByDate}>
+            <select data-testid="sort-select" value={sortByDate} onChange={handleSortByDate}>
               <option value="asc">Date Ascending</option>
               <option value="desc">Date Descending</option>
             </select>
@@ -126,7 +125,7 @@ function Popup() {
           <button onClick={handleExportCSV}>Export as CSV</button>
         </div>
       ) : (
-        <div className="NoHighlights">No highlights available</div>
+        <div className="NoHighlights" data-testid="no-highlights">No highlights available</div>
       )}
     </div>
   );
